@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import AllBeers from "./components/AllBeers";
@@ -15,7 +14,7 @@ class App extends Component {
   };
 
   addBeerHandler = newBeer => {
-    newBeer.attenuation_level = parseInt(newBeer.attenuation_level);
+    // newBeer.attenuation_level = parseInt(newBeer.attenuation_level);
 
     this.setState({
       newBeer: newBeer,
@@ -24,6 +23,7 @@ class App extends Component {
     axios
       .post(`https://ironbeer-api.herokuapp.com/beers/new`, { newBeer })
       .then(res => {
+        debugger;
         console.log(res);
         console.log(res.data);
       });
