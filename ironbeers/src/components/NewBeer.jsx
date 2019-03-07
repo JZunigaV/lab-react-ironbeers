@@ -142,6 +142,10 @@ class NewBeer extends Component {
           <div className="field">
             <div className="control">
               <button className="button is-link">Add new</button>
+
+              {this.props.status ? (
+                <label className="label">Beer saved Succesfuly</label>
+              ) : null}
             </div>
           </div>
         </form>

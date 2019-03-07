@@ -11,6 +11,7 @@ import NewBeer from "./components/NewBeer";
 class App extends Component {
   state = {
     newBeer: {},
+    success: false,
   };
 
   addBeerHandler = newBeer => {
@@ -20,12 +21,33 @@ class App extends Component {
       newBeer: newBeer,
     });
 
-    axios
-      .post(`https://ironbeer-api.herokuapp.com/beers/new`, { newBeer })
-      .then(res => {
+    var self = this;
+    axios({
+      method: "POST",
+      url: "https://ironbeer-api.herokuapp.com/beers/new",
+      data: newBeer,
+      config: { headers: { "Content-Type": "application/json" } },
+    })
+      .then(function(response) {
         debugger;
-        console.log(res);
-        console.log(res.data);
+        console.log(response);
+        if (response.status === 200) {
+          self.setState({
+            success: true,
+          });
+        } else {
+          self.setState({
+            success: false,
+          });
+        }
+      })
+      .catch(function(response) {
+        debugger;
+        console.log(response);
+
+        self.setState({
+          success: false,
+        });
       });
   };
 
@@ -40,7 +62,12 @@ class App extends Component {
 
           <Route
             path="/NewBeer"
-            render={props => <NewBeer addBeer={this.addBeerHandler} />}
+            render={props => (
+              <NewBeer
+                addBeer={this.addBeerHandler}
+                status={this.state.success}
+              />
+            )}
           />
         </Switch>
       </div>
