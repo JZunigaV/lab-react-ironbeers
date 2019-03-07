@@ -17,19 +17,21 @@ class AllBeers extends Component {
   render() {
     const beers = this.state.beers.map((beer, index) => {
       return (
-        <div key={index} class="columns is-mobile is-centered is-vcentered">
-          <div class="column">
+        <div key={index} className="columns is-mobile is-centered is-vcentered">
+          <div className="column">
             <img className="beer-image" src={beer.image_url} alt={beer.name} />
           </div>
 
-          <div class="column">
-            <span class="title">
+          <div className="column">
+            <span className="title">
               {" "}
               <Link to={`/BeerDetail/${beer._id}`}>{beer.name}</Link>
               <br />
-              <span class="subtitle">{beer.tagline}</span>
+              <span className="subtitle">{beer.tagline}</span>
               <br />
-              <span class="subtitle">Created by: {beer.contributed_by}</span>
+              <span className="subtitle">
+                Created by: {beer.contributed_by}
+              </span>
             </span>
           </div>
           <hr />
