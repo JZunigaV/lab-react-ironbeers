@@ -16,7 +16,6 @@ class App extends Component {
 
   addBeerHandler = newBeer => {
     newBeer.attenuation_level = parseInt(newBeer.attenuation_level);
-
     this.setState({
       newBeer: newBeer,
     });

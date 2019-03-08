@@ -19,7 +19,6 @@ class NewBeer extends Component {
   handleFormSubmit = event => {
     debugger;
     event.preventDefault();
-
     //Aqui se Agrega la cerveza
     this.props.addBeer(this.state);
 
